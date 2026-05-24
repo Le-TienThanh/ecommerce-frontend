@@ -30,6 +30,7 @@ const Footer = () => {
       { name: "Security", path: "#" },
     ],
   };
+  
 
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -167,10 +168,10 @@ const Footer = () => {
 
           <div className="text-center md:text-right">
             <p className="text-muted-foreground text-sm">
-              © 2024 ShopMate. All rights reserved.
+              © 2026 ShopMate. All rights reserved.
             </p>
             <p className="text-muted-foreground text-xs mt-1">
-              Developed By CodeWithZeeshu
+              Developed By ThanhLe
             </p>
           </div>
         </div>
