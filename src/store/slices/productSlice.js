@@ -25,11 +25,9 @@ export const fetchAllProducts = createAsyncThunk(
             if (ratings) params.append('ratings', ratings);
             if (search) params.append('search', search);
             if (page) params.append('page', page);
-
             const res = await axiosInstance.get(
                 `/product?${params.toString()}`,
             );
-
             return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(

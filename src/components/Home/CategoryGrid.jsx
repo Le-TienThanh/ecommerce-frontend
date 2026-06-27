@@ -5,14 +5,14 @@ const CategoryGrid = () => {
     <section className="py-16">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-foreground mb-4">
-          Shop by Category
+          Danh Mục Sản Phẩm
         </h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Discover our wide range of products across different categories
+          Khám phá đa dạng các sản phẩm công nghệ hiện đại với nhiều danh mục khác nhau
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
         {categories.map((category) => (
           <Link
             key={category.id}

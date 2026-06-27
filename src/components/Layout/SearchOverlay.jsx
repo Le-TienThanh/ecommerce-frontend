@@ -26,7 +26,7 @@ const SearchOverlay = () => {
                         <div className="glass-panel m-6 max-w-2xl mx-auto">
                             <div className="flex items-center justify-between mb-6">
                                 <h2 className="text-xl font-semibold text-primary">
-                                    Search Products
+                                    Tìm kiếm sản phẩm
                                 </h2>
                                 <button
                                     onClick={() => dispatch(toggleSearchBar())}
@@ -45,7 +45,7 @@ const SearchOverlay = () => {
                                 </button>
                                 <input
                                     type="text"
-                                    placeholder="Search for products..."
+                                    placeholder="Nhập để tìm kiếm..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     onKeyDown={(e) => e.key === "Enter" && handleSearch()}
@@ -56,7 +56,7 @@ const SearchOverlay = () => {
                             </div>
                             <div className='mt-6 text-center to-muted-foreground'>
                               <p>
-                                Start typing to search for products...
+                                Hãy tìm kiếm bất cứ thứ gì bạn muốn
                               </p>
 
                             </div>

@@ -47,7 +47,7 @@ const ProductSlider = ({ title, products }) => {
                 </div>
                 <div
                     ref={scrollRef}
-                    className="flex space-x-6 over-flow-x-auto scrollbar-hide pb-4"
+                    className="flex space-x-6 overflow-x-auto scrollbar-hide pb-4"
                 >
                     {products.map((product) => {
                         return (
@@ -114,7 +114,7 @@ const ProductSlider = ({ title, products }) => {
                                                         className={`w-4 h-4 ${
                                                             index <
                                                             Math.floor(
-                                                                product.rating,
+                                                                product.ratings,
                                                             )
                                                                 ? 'text-yellow-400 fill-current'
                                                                 : 'text-gray-300'

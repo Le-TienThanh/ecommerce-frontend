@@ -23,7 +23,7 @@ const Sidebar = () => {
         { name: 'Câu hỏi thường gặp', icon: HelpCircle, path: '/faq' },
         { name: 'Liên hệ', icon: Phone, path: '/contact' },
         { name: 'Giỏ hàng', icon: ShoppingCart, path: '/cart' },
-        authUser && { name: 'My Orders', icon: List, path: '/orders' },
+        authUser && { name: 'Đơn hàng của tôi', icon: List, path: '/orders' },
     ];
 
     const { isSidebarOpen } = useSelector((state) => state.popup);

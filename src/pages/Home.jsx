@@ -10,6 +10,7 @@ const Index = () => {
     const { topRatedProducts, newProducts } = useSelector(
         (state) => state.product,
     );
+    console.log('>>> newProducts: ', newProducts);
     return (
         <div className="min-h-screen">
             <HeroSlider />
@@ -17,13 +18,13 @@ const Index = () => {
                 <CategoryGrid />
                 {newProducts.length > 0 && (
                     <ProductSlider
-                        title="New Arrivals"
+                        title="Sản phẩm mới"
                         products={newProducts}
                     />
                 )}
                 {topRatedProducts.length > 0 && (
                     <ProductSlider
-                        title="Top Rated Products"
+                        title="Sản phẩm được đánh giá cao"
                         products={topRatedProducts}
                     />
                 )}

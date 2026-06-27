@@ -37,7 +37,7 @@ const CartSidebar = () => {
             <div className="fixed right-0 top-0 h-full w-96 z-50 glass-panel animate-slide-in-right overflow-y-auto">
                 <div className="flex items-center justify-between p-6 border-b border-[hsla(var(--glass-border))]">
                     <h2 className="text-xl font-semibold text-primary">
-                        Shopping Cart
+                        Giỏ hàng
                     </h2>
                     <button
                         onClick={() => dispatch(toggleCart())}
@@ -50,7 +50,7 @@ const CartSidebar = () => {
                     {cart && cart.length === 0 ? (
                         <div className="text-center py-12">
                             <p className="text-muted-foreground">
-                                Your cart is empty.
+                                Giỏ hàng đang trống.
                             </p>
                             <Link
                                 to={'/products'}
@@ -58,7 +58,7 @@ const CartSidebar = () => {
                                 className="inline-block mt-4 px-6 py-2 gradient-primary text-primary-foreground rounded-lg hover:glow-on-hover
                                 animate-smooth "
                             >
-                                Browse Products
+                                Khám phá các sản phẩm
                             </Link>
                         </div>
                     ) : (
@@ -158,7 +158,7 @@ const CartSidebar = () => {
                             <div className="border-t border-[hsla(var(--glass-border))] pt-4">
                                 <div className="flex justify-between items-center mb-4">
                                     <span className="text-lg font-semibold">
-                                        Total:
+                                        Tổng tiền:
                                     </span>
                                     <span className="text-xl font-bold text-primary">
                                         {Number(total).toLocaleString('vi-VN')}{' '}
@@ -171,7 +171,7 @@ const CartSidebar = () => {
                                     className="w-full py-3 block text-center gradient-primary text-primary-foreground rounded-lg 
                                 hover:glow-on-hover animate-smooth font-semibold"
                                 >
-                                    View Cart & checkout
+                                    Xem giỏ hàng và thanh toán
                                 </Link>
                             </div>
                         </>

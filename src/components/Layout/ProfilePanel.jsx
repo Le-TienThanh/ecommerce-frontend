@@ -8,6 +8,7 @@ import {
     updatePassword,
     updateProfile,
 } from '../../store/slices/authSlice.js';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePanel = () => {
     const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const ProfilePanel = () => {
             <div className="fixed right-0 top-0 h-full w-96 z-50 glass-panel animate-slide-in-right overflow-y-auto">
                 <div className="flex items-center justify-between p-6 border-b border-[hsla(var(--glass-border))]">
                     <h2 className="text-xl font-semibold text-primary">
-                        Profile
+                        Thông tin cá nhân
                     </h2>
                     <button
                         onClick={() => dispatch(toggleAuthPopup())}
@@ -76,18 +77,16 @@ const ProfilePanel = () => {
                             alt={authUser?.name}
                             className="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-primary object-cover"
                         />
-                        <h3 className="text-lg font-semibold text-foreground">
+                        <h3 className="text-lg font-semibold text-white">
                             {authUser?.name}
                         </h3>
-                        <p className="text-muted-foreground">
-                            {authUser?.email}
-                        </p>
+                        <p className="text-white">{authUser?.email}</p>
                     </div>
                     {/* PROFILE UPDATE FORM */}
                     {authUser && (
                         <div className="space-y-4 mb-8">
                             <h3 className="text-lg font-semibold text-primary">
-                                Update Profile
+                                Cập nhật
                             </h3>
                             <input
                                 type="text"
@@ -103,9 +102,9 @@ const ProfilePanel = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full p-2 rounded border border-border bg-secondary text-foreground"
                             />
-                            <label className="flex items-center gap-2 cursor-pointer text-sm text-muted-foreground">
-                                <Upload className="w-4 h-4 text-primary" />
-                                <span>Upload Avatar</span>
+                            <label className="flex items-center gap-2 cursor-pointer text-sm text-white">
+                                <Upload className="w-4 h-4 text-white" />
+                                <span>Tải lên ảnh đại diện</span>
                                 <input
                                     type="file"
                                     accept="image/*"
@@ -127,10 +126,10 @@ const ProfilePanel = () => {
                                                  rounded-full animate-spin`}
                                         />
 
-                                        <span>Updating Profile...</span>
+                                        <span>Đang cập nhật...</span>
                                     </>
                                 ) : (
-                                    'Save Changes'
+                                    'Lưu'
                                 )}
                             </button>
                         </div>
@@ -138,25 +137,25 @@ const ProfilePanel = () => {
                     {/* UPDATE PASSWORD FORM */}
                     <div className="space-y-4 mb-8">
                         <h3 className="text-lg font-semibold text-primary">
-                            Update Password
+                            Cập nhật mật khẩu
                         </h3>
                         <input
                             type={showPassword ? 'text' : 'password'}
-                            placeholder="Current Password"
+                            placeholder="Mật khẩu hiện tại"
                             value={currentPassword}
                             onChange={(e) => setCurrentPassword(e.target.value)}
                             className="w-full p-2 rounded border border-border bg-secondary text-foreground"
                         />
                         <input
                             type={showPassword ? 'text' : 'password'}
-                            placeholder="New Password"
+                            placeholder="Mật khẩu mới"
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
                             className="w-full p-2 rounded border border-border bg-secondary text-foreground"
                         />
                         <input
                             type={showPassword ? 'text' : 'password'}
-                            placeholder="Confirm New Password"
+                            placeholder="Xác nhận lại mật khẩu mới"
                             value={confirmNewPassword}
                             onChange={(e) =>
                                 setConfirmNewPassword(e.target.value)
@@ -165,14 +164,14 @@ const ProfilePanel = () => {
                         />
                         <button
                             onClick={() => setShowPassword(!showPassword)}
-                            className="text-xs text-muted-foreground flex items-center gap-1"
+                            className="text-xs text-white flex items-center gap-1"
                         >
                             {showPassword ? (
-                                <EyeOff className="w-4 h-4 text-primary " />
+                                <EyeOff className="w-4 h-4 text-white " />
                             ) : (
-                                <Eye className="w-4 h-4 text-primary" />
+                                <Eye className="w-4 h-4 text-white" />
                             )}
-                            {showPassword ? 'Hide ' : 'Show '} Passwords
+                            {showPassword ? 'Ẩn ' : 'Hiện '} mật khẩu
                         </button>
 
                         <button
@@ -186,10 +185,10 @@ const ProfilePanel = () => {
                                         className={`w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin`}
                                     />
 
-                                    <span>Updating Password...</span>
+                                    <span>Đang cập nhật...</span>
                                 </>
                             ) : (
-                                'Update Password'
+                                'Cập nhật mật khẩu'
                             )}
                         </button>
                     </div>
@@ -199,7 +198,7 @@ const ProfilePanel = () => {
                         onClick={handleLogout}
                     >
                         <LogOut className="w-5 h-5" />
-                        <span>Log Out</span>
+                        <span>Đăng xuất</span>
                     </button>
                 </div>
             </div>

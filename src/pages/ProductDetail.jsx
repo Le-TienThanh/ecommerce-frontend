@@ -23,7 +23,7 @@ const ProductDetail = () => {
     const { loading, productReviews } = useSelector((state) => state.product);
     const [selectedImage, setSelectedImage] = useState(0);
     const [quantity, setQuantity] = useState(1);
-    const [activeTab, setActiveTab] = useState('description');
+    const [activeTab, setActiveTab] = useState('Mô tả');
 
     const handleAddToCart = () => {
         dispatch(addToCart({ product, quantity }));
@@ -166,9 +166,7 @@ const ProductDetail = () => {
                                     </span>
                                     <span>
                                         ({productReviews?.length}){' '}
-                                        {productReviews?.length === 1
-                                            ? 'review'
-                                            : 'reviews'}
+                                        đánh giá
                                     </span>
                                 </div>
                                 <div className="flex items-center space-x-4 mb-6">
@@ -181,7 +179,7 @@ const ProductDetail = () => {
                                 </div>
                                 <div className="flex items-center space-x-4 mb-6">
                                     <span className="text-muted-foreground">
-                                        Category: {product.category}
+                                        Thể loại: {product.category}
                                     </span>
                                     <span
                                         className={`
@@ -194,16 +192,16 @@ const ProductDetail = () => {
                                         }`}
                                     >
                                         {product.stock > 5
-                                            ? 'In Stock'
+                                            ? 'Còn hàng'
                                             : product.stock > 0
-                                              ? 'Limited Stock'
-                                              : 'Out of Stock'}
+                                              ? 'Sắp hết hàng'
+                                              : 'Hết hàng'}
                                     </span>
                                 </div>
                                 <div className="glass-card p-6 mb-6">
                                     <div className="flex items-center space-x-4 mb-6">
                                         <span className="text-lg font-medium">
-                                            Quantity:
+                                            Số lượng:
                                         </span>
                                         <div className="flex items-center space-x-3">
                                             <button
@@ -245,7 +243,7 @@ const ProductDetail = () => {
                                             font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             <ShoppingCart className="w-5 h-5" />
-                                            <span>Add to Cart</span>
+                                            <span>Thêm vào giỏ hàng</span>
                                         </button>
                                         <button
                                             disabled={product.stock === 0}
@@ -255,14 +253,14 @@ const ProductDetail = () => {
                                             onClick={handleBuyNow}
                                         >
                                             <CircleDollarSign className="w-5 h-5" />
-                                            <span>Buy Now</span>
+                                            <span>Mua ngay</span>
                                         </button>
                                     </div>
                                     <div className="flex items-center space-x-4 mt-4">
-                                        <button className="flex items-center space-x-2 text-muted-foreground hover:text-primary animate-smooth">
+                                        {/* <button className="flex items-center space-x-2 text-muted-foreground hover:text-primary animate-smooth">
                                             <Heart className="w-5 h-5" />
                                             <span>Add to Wishlist</span>
-                                        </button>
+                                        </button> */}
                                         <button
                                             onClick={handleCopyURL}
                                             className="flex items-center space-x-2 text-muted-foreground hover:text-primary animate-smooth"
@@ -277,7 +275,7 @@ const ProductDetail = () => {
                     </div>
                     <div className="glass-panel">
                         <div className="flex border-b border-[hsla(var(--glass-border))]">
-                            {['description', 'reviews'].map((tab) => {
+                            {['Mô tả', 'Đánh giá'].map((tab) => {
                                 return (
                                     <button
                                         key={tab}
@@ -295,17 +293,17 @@ const ProductDetail = () => {
                             })}
                         </div>
                         <div className="p-6">
-                            {activeTab === 'description' && (
+                            {activeTab === 'Mô tả' && (
                                 <div>
                                     <h3 className="text-xl font-semibold text-foreground mb-4">
-                                        Product Description
+                                        Mô tả sản phẩm
                                     </h3>
                                     <p className="text-muted-foreground loading-relaxed">
                                         {product.description}
                                     </p>
                                 </div>
                             )}
-                            {activeTab === 'reviews' && (
+                            {activeTab === 'Đánh giá' && (
                                 <>
                                     <ReviewsContainer
                                         product={product}

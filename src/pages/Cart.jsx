@@ -2,6 +2,10 @@ import { Plus, Minus, Trash2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, updateCartQuantity } from '../store/slices/cartSlice';
+import {
+    toggleAuthPopup,
+  
+} from '../store/slices/popupSlice';
 
 const Cart = () => {
     const { cart } = useSelector((state) => state.cart);
@@ -30,17 +34,17 @@ const Cart = () => {
             <div className="min-h-screen pt-20 flex items-center justify-center">
                 <div className="text-center glass-panel max-w-md">
                     <h1 className="text-3xl font-bold text-foreground mb-4">
-                        Your Cart is Empty
+                        Giỏ hàng của bạn đang trống
                     </h1>
                     <p className="text-muted-foreground mb-8">
-                        Looks like you haven't added anything to your cart yet.
+                        Có vẻ như bạn vẫn chưa thêm sản phẩm nào vào giỏ hàng.
                     </p>
                     <Link
                         to={'/products'}
                         className="inline-flex items-center space-x-2 px-6 py-3  rounded-lg
                     text-primary-foreground gradient-primary hover:glow-on-hover animate-smooth font-semibold"
                     >
-                        <span>Continue Shopping</span>
+                        <span>Tiếp Tục Mua Sắm</span>
                         <ArrowRight className="w-5 h-5" />
                     </Link>
                 </div>
@@ -54,12 +58,10 @@ const Cart = () => {
                 <div className="container mx-auto px-4 py-8">
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold text-foreground mb-2">
-                            Shopping Cart
+                            Giỏ hàng
                         </h1>
                         <p className="text-muted-foreground">
-                            {cartItemsCount}{' '}
-                            {cartItemsCount === 1 ? 'item' : 'items'} in your
-                            cart
+                            Có {cartItemsCount} sản phẩm trong giỏ hàng của bạn
                         </p>
                     </div>
 
@@ -100,7 +102,7 @@ const Cart = () => {
                                                     </h3>
                                                 </Link>
                                                 <p className="text-muted-foreground text-sm mb-2">
-                                                    Category:{' '}
+                                                    Thể loại:{' '}
                                                     {item.product.category}
                                                 </p>
                                                 <div className="flex items-center space-x-2">
@@ -182,15 +184,12 @@ const Cart = () => {
                         <div className="lg:col-span-1">
                             <div className="glass-panel sticky top-24">
                                 <h2 className="text-xl font-semibold text-foreground mb-6">
-                                    Order Summary
+                                    Tóm tắt đơn hàng
                                 </h2>
                                 <div className="space-y-4 mb-6">
                                     <div className="flex justify-between ">
                                         <span className="text-muted-foreground ">
-                                            Subtotal ({cartItemsCount}{' '}
-                                            {cartItemsCount === 1
-                                                ? 'item'
-                                                : 'items'}
+                                            Tạm tính ({cartItemsCount}
                                             ):{' '}
                                         </span>
                                         <span className="font-semibold">
@@ -203,7 +202,7 @@ const Cart = () => {
 
                                     <div className="flex justify-between">
                                         <span className="text-muted-foreground">
-                                            Shipping
+                                            Chi phí vận chuyển:
                                         </span>
                                         <span className="font-semibold text-green-500">
                                             {total >= 1000000
@@ -214,7 +213,7 @@ const Cart = () => {
                                     <div className="border-t border-[hsla(var(--glass-border))] pt-4">
                                         <div className="flex justify-between">
                                             <span className="text-lg font-semibold">
-                                                Total
+                                                Tổng tiền
                                             </span>
                                             <span>
                                                 {total >= 1000000
@@ -233,22 +232,33 @@ const Cart = () => {
                                     </div>
                                 </div>
 
-                                {authUser && (
+                                {authUser ? (
                                     <Link
                                         to={'/payment'}
                                         className="w-full block text-center py-4 gradient-primary
                                         text-primary-foreground rounded-lg hover:glow-on-hover animate-smooth font-semibold
                                         mb-4"
                                     >
-                                        Proceed to Checkout
+                                        Tiến hành thanh toán
                                     </Link>
+                                ) : (
+                                    <button
+                                        className="w-full block text-center py-4 gradient-primary
+                                        text-primary-foreground rounded-lg hover:glow-on-hover animate-smooth font-semibold
+                                        mb-4"
+                                        onClick={() => {
+                                            dispatch(toggleAuthPopup());
+                                        }}
+                                    >
+                                        Đăng nhập để thực hiện thanh toán
+                                    </button>
                                 )}
                                 <Link
                                     to={'/products'}
                                     className="w-full block text-center py-4 bg-secondary text-foreground
                                 rounded-lg animate-smooth font-semibold mb-4 border-border hover:bg-accent"
                                 >
-                                    Continue Shopping{' '}
+                                    Tiếp tục mua sắm{' '}
                                 </Link>
                             </div>
                         </div>

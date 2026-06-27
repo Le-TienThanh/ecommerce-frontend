@@ -7,9 +7,9 @@ const NotFound = () => {
       <div className="text-center">
         <div className="mb-8">
           <h1 className="text-9xl font-bold text-primary mb-4">404</h1>
-          <h2 className="text-3xl font-bold text-foreground mb-4">Page Not Found</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-4">Không tìm thấy trang</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
-            Sorry, the page you are looking for doesn't exist or has been moved.
+            Xin lỗi, trang bạn đang tìm không tồn tại hoặc đã được di chuyển.
           </p>
         </div>
 
@@ -19,14 +19,14 @@ const NotFound = () => {
             className="flex items-center justify-center space-x-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
           >
             <Home className="w-5 h-5" />
-            <span>Go Home</span>
+            <span>Trang chủ</span>
           </Link>
           <button
             onClick={() => window.history.back()}
             className="flex items-center justify-center space-x-2 px-6 py-3 bg-secondary text-foreground rounded-lg hover:bg-secondary/80 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span>Go Back</span>
+            <span>Quay lại</span>
           </button>
         </div>
       </div>

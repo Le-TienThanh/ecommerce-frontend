@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
                                 NEW
                             </span>
                         )}
-                        {product.rating >= 4.5 && (
+                        {product.ratings >= 4.5 && (
                             <span
                                 className="px-2 py-1 bg-gradient-to-r from-yellow-400 to-rose-500 text-white
                                   bg-primary text-primary-foreground text-xs font-semibold rounded"
@@ -71,7 +71,7 @@ const ProductCard = ({ product }) => {
                                     <Star
                                         key={index}
                                         className={`w-4 h-4 ${
-                                            index < Math.floor(product.rating)
+                                            index < Math.floor(product.ratings)
                                                 ? 'text-yellow-400 fill-current'
                                                 : 'text-gray-300'
                                         }`}

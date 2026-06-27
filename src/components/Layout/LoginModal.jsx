@@ -40,7 +40,8 @@ const LoginModal = () => {
             data.append('name', formData.name);
         }
         if (mode === 'forgot') {
-            dispatch(forgotPassword({ email: formData.email })).then(() => {
+            // chay o cong 5173
+            dispatch(forgotPassword({ email: formData.email, frontEndUrl: 'http://localhost:5173' })).then(() => {
                 dispatch(toggleAuthPopup());
                 setMode('signin');
             });
@@ -90,7 +91,7 @@ const LoginModal = () => {
                                   ? 'Tạo tài khoản'
                                   : mode === 'forgot'
                                     ? 'Quên mật khẩu?'
-                                    : 'Chào mừng bạn đến với TechShop'}
+                                    : 'Chào mừng bạn đến với TechStore'}
                         </h2>
                         <button
                             onClick={() => {
@@ -121,7 +122,6 @@ const LoginModal = () => {
                                     rounded-lg focus:outline-none"
                                     required
                                 />
-                                
                             </div>
                         )}
                         {/* EMAIL - ALWAYS VISIBLE EXCEPT FOR RESET MODE */}
@@ -147,9 +147,9 @@ const LoginModal = () => {
                         {/* PASSWORD - ALWAYS VISIBLE EXCEPT FOR FORGOT MODE */}
                         {mode !== 'forgot' && (
                             <div className="relative">
-                                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                                 <input
-                                    type={showPassword ? "text" : "password"}
+                                    type={showPassword ? 'text' : 'password'}
                                     placeholder="Mật khẩu"
                                     value={formData.password}
                                     onChange={(e) => {
@@ -168,14 +168,13 @@ const LoginModal = () => {
                                     }
                                     className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground 
                                     flex items-center justify-center gap-1"
-                                    type='button'
+                                    type="button"
                                 >
                                     {showPassword ? (
                                         <EyeOff className="w-4 h-4 text-primary " />
                                     ) : (
                                         <Eye className="w-4 h-4 text-primary" />
                                     )}
-                                    
                                 </button>
                             </div>
                         )}
@@ -205,7 +204,7 @@ const LoginModal = () => {
                                 <button
                                     type="button"
                                     onClick={() => setMode('forgot')}
-                                    className="text-primary hover:text-accent animate-smooth hover:text-blue-500 underline"
+                                    className=" animate-smooth text-primary hover:text-blue-500 underline"
                                 >
                                     Quên mật khẩu?
                                 </button>
@@ -256,11 +255,25 @@ const LoginModal = () => {
                                         prev === 'signup' ? 'signin' : 'signup',
                                     );
                                 }}
-                                className="text-primary hover:text-blue-500 animate-smooth underline"
+                                className="text-primary  "
                             >
-                                {mode === 'signup'
-                                    ? 'Đã có tài khoản? Đăng nhập'
-                                    : "Chưa có tài khoản? Đăng ký"}
+                                {mode === 'signup' ? (
+                                    <>
+                                        {' '}
+                                        <span className='cursor-default'>Đã có tài khoản?</span>{' '}
+                                        <span className="text-blue-500 underline">
+                                            Đăng nhập
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        {' '}
+                                        <span className='cursor-default'>Chưa có tài khoản?</span>{' '}
+                                        <span className="text-blue-500 underline">
+                                            Đăng ký
+                                        </span>
+                                    </>
+                                )}
                             </button>
                         </div>
                     )}

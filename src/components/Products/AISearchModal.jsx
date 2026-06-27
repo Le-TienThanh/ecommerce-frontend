@@ -16,9 +16,9 @@ const AISearchModal = () => {
     };
     // NEED CHANGE FOR SUITABLE WITH YOUR PROJECT
     const exampleText = [
-        'Find the best suitable GPU with Ryzen 5600X',
-        'Find all leather jackets for men',
-        'Find all red T-shirts for me',
+        'Tìm laptop gaming dưới 25 triệu',
+        'Tìm tai nghe chống ồn tốt nhất',
+        'Tìm bàn phím cơ cho lập trình viên',
     ];
     if (!isAIPopupOpen) return null;
     return (
@@ -41,7 +41,7 @@ const AISearchModal = () => {
                                 <Sparkles className="w-5 h-5 text-white" />
                             </div>
                             <h2 className="text-2xl font-bold text-foreground">
-                                AI Product Search
+                                Tìm kiếm sản phẩm với AI
                             </h2>
                         </div>
                         <button
@@ -54,8 +54,8 @@ const AISearchModal = () => {
 
                     {/* Description */}
                     <p className="text-muted-foreground mb-6">
-                        Describe what you're looking for and our AI will find
-                        the perfect products for you.
+                        Mô tả sản phẩm bạn muốn tìm, AI sẽ giúp bạn khám phá
+                        những sản phẩm phù hợp nhất.
                     </p>
 
                     {/* Search Form */}
@@ -64,7 +64,7 @@ const AISearchModal = () => {
                             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                             <input
                                 type="text"
-                                placeholder="e.g., 'A wireless headphone for gaming with good bass'"
+                                placeholder="Ví dụ: Laptop phù hợp cho sinh viên"
                                 value={userPrompt}
                                 onChange={(e) => setUserPrompt(e.target.value)}
                                 className="w-full pl-12 pr-4 py-4 bg-secondary border border-border rounded-lg focus:outline-none 
@@ -89,13 +89,14 @@ const AISearchModal = () => {
                                         className={`w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin`}
                                     />
                                     <span>
-                                        AI doing magic in the background ...
+                                        AI đang xử lý và tìm kiếm sản phẩm phù
+                                        hợp...
                                     </span>
                                 </>
                             ) : (
                                 <>
                                     <Sparkles className="w-5 h-5" />
-                                    <span>Search with AI</span>
+                                    <span>Tìm kiếm với AI</span>
                                 </>
                             )}
                         </button>
@@ -104,7 +105,7 @@ const AISearchModal = () => {
                     {/* Example Queries */}
                     <div className="mt-6">
                         <p className="text-sm text-muted-foreground mb-3">
-                            Try these examples:
+                            Gợi ý tìm kiếm:
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {exampleText.map((example) => (

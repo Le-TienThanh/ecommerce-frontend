@@ -44,8 +44,6 @@ const Payment = () => {
         formData.append('phone', shippingDetails.phone);
         formData.append('address', shippingDetails.address);
         formData.append('city', shippingDetails.city);
-        formData.append('pincode', shippingDetails.zipCode);
-        formData.append('country', shippingDetails.country);
         formData.append('orderedItems', JSON.stringify(cart));
         dispatch(placeOrder(formData));
     };
@@ -54,18 +52,17 @@ const Payment = () => {
             <div className="min-h-screen pt-20 flex items-center justify-center">
                 <div className="text-center glass-panel max-w-md">
                     <h1 className="text-3xl font-bold text-foreground mb-4">
-                        No Items in Cart.
+                        Giỏ hàng của bạn đang trống
                     </h1>
                     <p className="text-muted-foreground mb-8">
-                        Add some items to your cart before processing to
-                        checkout.
+                        Thêm một số mặt hàng vào giỏ hàng của bạn trước khi tiến hành thanh toán.
                     </p>
                     <Link
                         to={'/products'}
                         className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg 
                     text-primary-foreground gradient-primary hover:glow-on-hover animate-smooth font-semibold"
                     >
-                        Browser products
+                        Thêm sản phẩm vào giỏ hàng
                     </Link>
                 </div>
             </div>
@@ -102,7 +99,9 @@ const Payment = () => {
                                             '1'
                                         )}
                                     </div>
-                                    <span className="font-medium">Details</span>
+                                    <span className="font-medium">
+                                        Chi tiết
+                                    </span>
                                 </div>
 
                                 <div
@@ -122,7 +121,9 @@ const Payment = () => {
                                     >
                                         2
                                     </div>
-                                    <span className="font-medium">Payment</span>
+                                    <span className="font-medium">
+                                        Thanh toán
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -137,12 +138,12 @@ const Payment = () => {
                                         className="glass-panel"
                                     >
                                         <h2 className="text-xl font-semibold text-foreground mb-6">
-                                            Shipping Information
+                                            Thông tin giao hàng
                                         </h2>
                                         <div className="mb-6">
                                             <div>
                                                 <label className="block text-sm font-medium text-foreground mb-2">
-                                                    Full Name *
+                                                    Họ và tên *
                                                 </label>
                                                 <input
                                                     type="text"
@@ -165,7 +166,7 @@ const Payment = () => {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                             <div>
                                                 <label className="block text-sm font-medium text-foreground mb-2">
-                                                    State *
+                                                    Xã/Phường *
                                                 </label>
                                                 <input
                                                     type="text"
@@ -187,7 +188,7 @@ const Payment = () => {
 
                                             <div>
                                                 <label className="block text-sm font-medium text-foreground mb-2">
-                                                    City *
+                                                    Tỉnh/Thành phố *
                                                 </label>
                                                 <input
                                                     type="text"
@@ -209,7 +210,7 @@ const Payment = () => {
                                         <div className="mb-4">
                                             <div>
                                                 <label className="block text-sm font-medium text-foreground mb-2">
-                                                    Address *
+                                                    Địa chỉ *
                                                 </label>
                                                 <input
                                                     type="text"
@@ -232,7 +233,7 @@ const Payment = () => {
                                         <div className="mb-6">
                                             <div>
                                                 <label className="block text-sm font-medium text-foreground mb-2">
-                                                    Phone *
+                                                    Số điện thoại *
                                                 </label>
                                                 <input
                                                     type="tel"
@@ -257,7 +258,7 @@ const Payment = () => {
                                             className="w-full py-3 gradient-primary text-primary-foreground rounded-lg 
                                         hover:glow-on-hover animate-smooth font-semibold"
                                         >
-                                            Continue to Payment
+                                            Tiếp tục thanh toán
                                         </button>
                                     </form>
                                 ) : (
@@ -273,7 +274,7 @@ const Payment = () => {
                             <div className="lg:col-span-1">
                                 <div className="glass-panel sticky top-24">
                                     <h2 className="text-xl font-semibold text-foreground">
-                                        Order Summary
+                                        Tóm tắt đơn hàng
                                     </h2>
                                     <div className="space-y-4 mb-6">
                                         {cart.map((item) => {
@@ -295,7 +296,7 @@ const Payment = () => {
                                                             {item.product.name}
                                                         </p>
                                                         <p className="text-xs text-muted-foreground">
-                                                            Quantity:{' '}
+                                                            Số lượng:{' '}
                                                             {item.quantity}
                                                         </p>
                                                     </div>
@@ -316,7 +317,7 @@ const Payment = () => {
                                     <div className="space-y-2 border-t border-[hsla(var(--glass-border))] pt-4 ">
                                         <div className="flex justify-between">
                                             <span className="text-muted-foreground">
-                                                Shipping
+                                                Phí vận chuyển
                                             </span>
                                             <span className=" text-green-500">
                                                 {total >= 1000000
@@ -328,7 +329,7 @@ const Payment = () => {
                                             className="flex justify-between font-semibold text-lg pt-2 border-t 
                                         border-[hsla(var(--glass-border))]"
                                         >
-                                            <span>Total</span>
+                                            <span>Tổng tiền</span>
                                             <span>
                                                 {total >= 1000000
                                                     ? total.toLocaleString(

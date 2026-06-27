@@ -34,13 +34,13 @@ const Navbar = () => {
                         {/* CENTER - LOGO */}
                         <div className="flex-1 flex justify-center">
                             <h1 className={`text-2xl font-bold text-primary transition duration-300 hover:scale-150`}>
-                                <Link to={'/'}>TechShop</Link>
+                                <Link to={'/'}>TechStore</Link>
                             </h1>
                         </div>
                         {/* RIGHT SIDE ICONS */}
                         <button
                             onClick={toggleTheme}
-                            className="p-2 rounded-lg hover:bg-secondary transition-colors"
+                            className="p-2 rounded-lg  transition-colors hover:glow-on-hover  "
                         >
                             {theme === 'dark' ? (
                                 <Sun className="w-5 h-5 text-foreground" />
@@ -53,7 +53,7 @@ const Navbar = () => {
                             onClick={() => {
                                 dispatch(toggleSearchBar());
                             }}
-                            className="p-2 rounded-lg hover:bg-secondary transition-colors"
+                            className="p-2 rounded-lg hover:glow-on-hover transition-colors"
                         >
                             <Search className="w-5 h-5 text-foreground" />
                         </button>
@@ -62,7 +62,7 @@ const Navbar = () => {
                             onClick={() => {
                                 dispatch(toggleAuthPopup());
                             }}
-                            className="p-2 rounded-lg hover:bg-secondary transition-colors"
+                            className="p-2 rounded-lg hover:glow-on-hover transition-colors"
                         >
                             <User className="w-5 h-5 text-foreground" />
                         </button>
@@ -71,7 +71,7 @@ const Navbar = () => {
                             onClick={() => {
                                 dispatch(toggleCart());
                             }}
-                            className="relative p-2 rounded-lg hover:bg-secondary transition-colors"
+                            className="relative p-2 rounded-lg hover:glow-on-hover transition-colors"
                         >
                             <ShoppingCart className="w-5 h-5 text-foreground" />
                             {cartItemsCount > 0 && (

@@ -6,8 +6,10 @@ import { CreditCard, Lock } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { toggleOrderStep } from '../store/slices/orderSlice';
 import { clearCart } from '../store/slices/cartSlice';
+import { useTheme } from '../contexts/ThemeContext';
 
 const PaymentForm = () => {
+    const { theme } = useTheme();
     const clientSecret = useSelector((state) => state.order.paymentIntent);
     const stripe = useStripe();
     const elements = useElements();
@@ -34,7 +36,7 @@ const PaymentForm = () => {
         if (error) {
             setErrorMessage(error.message);
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-            toast.success('Payment successful!');
+            toast.success('Thanh toán thành công!');
             navigateTo('/');
         }
         setIsProcessing(false);
@@ -50,17 +52,24 @@ const PaymentForm = () => {
                         <CreditCard className="w-6 h-6 text-primary-foreground" />
                     </div>
                     <h2 className="text-xl font-semibold text-foreground">
-                        Card Payment
+                        Thanh toán bằng thẻ
                     </h2>
                 </div>
 
                 <div className="mb-6">
                     <label className="block text-sm font-medium text-foreground mb-2">
-                        Card Details *
+                        Thông tin thẻ *
                     </label>
                     <div className="px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none text-foreground">
                         <CardElement
-                            options={{ style: { base: { fontSize: '16px', color: '#3478FD' } } }}
+                            options={{
+                                style: {
+                                    base: {
+                                        fontSize: '16px',
+                                        color: `${theme === 'dark'? '#fff' : '#000' }`,
+                                    },
+                                },
+                            }}
                         />
                     </div>
                 </div>
@@ -68,7 +77,7 @@ const PaymentForm = () => {
                 <div className="flex items-center space-x-2 mb-6 p-4 bg-secondary/50 rounded-lg">
                     <Lock className="w-5 h-5 text-green-500" />
                     <span className="text-sm text-muted-foreground">
-                        Your card information is encrypted and secure.
+                        Thông tin thẻ của bạn được mã hóa và bảo mật an toàn.
                     </span>
                 </div>
 
@@ -83,11 +92,11 @@ const PaymentForm = () => {
                                 className={`w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin`}
                             />
                             <span className="text-white">
-                                Payment Processing ...
+                                Đang Xử Lý Thanh Toán...
                             </span>
                         </>
                     ) : (
-                        'Complete Payment'
+                        'Hoàn Tất Thanh Toán'
                     )}
                 </button>
 

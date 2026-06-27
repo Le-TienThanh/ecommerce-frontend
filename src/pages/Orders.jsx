@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 const Orders = () => {
     const [statusFilter, setStatusFilter] = useState('All');
     const { myOrders } = useSelector((state) => state.order);
+
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchMyOrders());
@@ -64,10 +65,10 @@ const Orders = () => {
                 <div className="container mx-auto px-4 py-8">
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold text-foreground mb-2">
-                            My Orders
+                            Đơn hàng của tôi
                         </h1>
                         <p className="text-muted-foreground">
-                            Track and manage your order history
+                            Theo dõi và quản lý lịch sử đơn hàng của bạn
                         </p>
                     </div>
                     {/* STATUS FILTER */}
@@ -76,7 +77,7 @@ const Orders = () => {
                             <div className="flex items-center space-x-2">
                                 <Filter className="w-5 h-5 text-primary" />
                                 <span className="font-medium">
-                                    Filter by status:
+                                    Lọc theo trạng thái:
                                 </span>
                             </div>
                             <div className="flex flex-wrap gap-2">
@@ -107,12 +108,12 @@ const Orders = () => {
                         <div className="text-center glass-panel max-w-md mx-auto">
                             <Package className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
                             <h2 className="text-xl font-semibold text-foreground mb-2">
-                                No Orders Found
+                                Không tìm thấy đơn hàng nào
                             </h2>
                             <p className="text-muted-foreground">
                                 {statusFilter === 'All'
-                                    ? "You haven't placed any orders yet."
-                                    : `No orders with status "${statusFilter}" found.`}
+                                    ? 'Bạn vẫn chưa đặt đơn hàng nào.'
+                                    : `Không tìm thấy đơn hàng nào với trạng thái "${statusFilter}".`}
                             </p>
                         </div>
                     ) : (
@@ -130,10 +131,10 @@ const Orders = () => {
                                         >
                                             <div>
                                                 <h3 className="text-lg font-semibold from-foreground mb-1">
-                                                    Orders #{order.id}
+                                                    Đơn hàng #{order.id}
                                                 </h3>
                                                 <p className="text-muted-foreground">
-                                                    Placed on{' '}
+                                                    Ngày đặt hàng{' '}
                                                     {new Date(
                                                         order.created_at,
                                                     ).toLocaleDateString()}
@@ -153,7 +154,7 @@ const Orders = () => {
                                                 </div>
                                                 <div className="text-right">
                                                     <p className="text-sm text-muted-foreground">
-                                                        Total
+                                                        Tổng tiền
                                                     </p>
                                                     <p className="text-xl font-bold text-primary">
                                                         {Number(
@@ -186,7 +187,7 @@ const Orders = () => {
                                                                 {item.title}
                                                             </h4>
                                                             <p className="text-sm text-muted-foreground">
-                                                                Quantity:{' '}
+                                                                Số lượng:{' '} 
                                                                 {item.quantity}
                                                             </p>
                                                         </div>
@@ -206,7 +207,7 @@ const Orders = () => {
                                         </div>
 
                                         {/* ORDER ACTIONS */}
-                                        <div className="flex flex-wrap gap-3 mt-6 pt-6 border-t border-[hsla(var(--glass-border))]">
+                                        {/* <div className="flex flex-wrap gap-3 mt-6 pt-6 border-t border-[hsla(var(--glass-border))]">
                                             <button className="px-4 py-2 glass-card hover:glow-on-hover animate-smooth text-sm">
                                                 View Details
                                             </button>
@@ -225,12 +226,12 @@ const Orders = () => {
                                                 </>
                                             )}
 
-                                            {/* {order.status === 'Processing' && (
+                                            {order.status === 'Processing' && (
                                                 <button className="px-4 py-2 glass-card hover:glow-on-hover animate-smooth text-sm text-destructive">
                                                     Cancel Order
                                                 </button>
-                                            )} */}
-                                        </div>
+                                            )}
+                                        </div> */}
                                     </div>
                                 );
                             })}

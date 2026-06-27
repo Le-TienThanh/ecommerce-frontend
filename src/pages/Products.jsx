@@ -11,6 +11,7 @@ import { toggleAIModal } from '../store/slices/popupSlice';
 
 const Products = () => {
     const { products, totalProducts } = useSelector((state) => state.product);
+    console.log('>>> check products:', products);
     const useQuery = () => {
         return new URLSearchParams(useLocation().search);
     };
@@ -23,7 +24,7 @@ const Products = () => {
         searchedCategory || '',
     );
 
-    const [priceRange, setPriceRange] = useState([0, 10000000]);
+    const [priceRange, setPriceRange] = useState([0, 100000000]);
     const [selectedRating, setSelectedRating] = useState(0);
     const [availability, setAvailability] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -31,6 +32,7 @@ const Products = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
+        
         dispatch(
             fetchAllProducts({
                 availability: availability,
@@ -67,7 +69,7 @@ const Products = () => {
                              glass-card hover:glow-on-hover animate-smooth flex items-center space-x-2"
                         >
                             <Filter className="w-5 h-5" />
-                            <span>Filters</span>
+                            <span>Bộ lọc</span>
                         </button>
                         {/* SIDEBAR FILTERS */}
                         <div
@@ -77,18 +79,18 @@ const Products = () => {
                         >
                             <div className="glass-panel">
                                 <h2 className="text-xl font-semibold text-foreground mb-6">
-                                    Filters
+                                    Bộ lọc
                                 </h2>
                                 {/* PRICE RANGE */}
                                 <div className="mb-6">
                                     <h3 className="text-lg font-medium text-foreground mb-3">
-                                        Price Range
+                                        Lọc theo giá
                                     </h3>
                                     <div className="space-y-2">
                                         <input
                                             type="range"
                                             min={'0'}
-                                            max={'10000000'}
+                                            max={'100000000'}
                                             value={priceRange[1]}
                                             onChange={(e) =>
                                                 setPriceRange([
@@ -117,7 +119,7 @@ const Products = () => {
                                 {/* RATING */}
                                 <div className="mb-6">
                                     <h3 className="text-lg font-medium text-foreground mb-3">
-                                        Rating
+                                        Đánh giá
                                     </h3>
                                     <div className="space-y-2">
                                         {[5, 4, 3, 2, 1].map((rating) => {
@@ -162,7 +164,7 @@ const Products = () => {
                                 {/* AVAILABILITY */}
                                 <div className="mb-6">
                                     <h3 className="text-lg font-medium text-foreground mb-3">
-                                        Availability
+                                        Tình trạng
                                     </h3>
                                     <div className="space-y-2">
                                         {[
@@ -188,10 +190,10 @@ const Products = () => {
                                                     }`}
                                                 >
                                                     {status === 'in-stock'
-                                                        ? 'In Stock'
+                                                        ? 'Còn hàng'
                                                         : status === 'limited'
-                                                          ? 'Limited Stock '
-                                                          : 'Out of Stock'}
+                                                          ? 'Sắp hết hàng '
+                                                          : 'Hết hàng'}
                                                 </button>
                                             );
                                         })}
@@ -200,7 +202,7 @@ const Products = () => {
                                 {/* CATEGORY */}
                                 <div className="mb-6">
                                     <h3 className="text-lg font-medium text-foreground mb-3">
-                                        Category
+                                        Thể loại
                                     </h3>
                                     <div className="space-y-2">
                                         <button
@@ -213,7 +215,7 @@ const Products = () => {
                                                     : 'hover:bg-secondary'
                                             }`}
                                         >
-                                            All Categories
+                                            Tất cả
                                         </button>
                                         {categories.map((category) => {
                                             return (
@@ -231,7 +233,7 @@ const Products = () => {
                                                             : 'hover:bg-secondary'
                                                     }`}
                                                 >
-                                                    {category.name}
+                                                    {category.name} 
                                                 </button>
                                             );
                                         })}
@@ -245,17 +247,17 @@ const Products = () => {
                             <div className="mb-8 flex max-[440px]:flex-col items-center gap-2">
                                 <div className="relative w-[-webkit-fill-available]">
                                     <Search
-                                        className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 
+                                        className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5
                                     text-muted-foreground"
                                     />
                                     <input
                                         type="text"
-                                        placeholder="Search Products..."
+                                        placeholder="Tìm kiếm sản phẩm..."
                                         value={searchQuery}
                                         onChange={(e) =>
                                             setSearchQuery(e.target.value)
                                         }
-                                        className="w-full pl-10 pr-4 py-3 bg-secondary border border-border rounded-lg 
+                                        className="w-full h-12 pl-10 pr-4 py-3 bg-secondary border border-border rounded-lg 
                                     focus:outline-none text-foreground placeholder-muted-foreground"
                                     />
                                 </div>
@@ -301,7 +303,7 @@ const Products = () => {
                             {products.length === 0 && (
                                 <div className="text-center py-12">
                                     <p className="text-muted-foreground text-lg">
-                                        No products found matching your criteria
+                                       Không tìm thấy sản phẩm phù hợp
                                     </p>
                                 </div>
                             )}

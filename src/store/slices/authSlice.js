@@ -47,6 +47,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         const res = await axiosInstance.get('/auth/logout');
         thunkAPI.dispatch(toggleAuthPopup());
+        toast.success('Đăng xuất thành công')
         return null;
     } catch (error) {
         toast.error(error.response?.data?.message);
@@ -58,11 +59,11 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
 export const forgotPassword = createAsyncThunk(
     'auth/forgot/password',
-    async (email, thunkAPI) => {
+    async ({email, frontEndUrl}, thunkAPI) => {
         try {
             const res = await axiosInstance.post(
                 '/auth/password/forgot?frontendUrl=http://localhost:5173',
-                email,
+                {email, frontEndUrl},
             );
             toast.success(res.data.message);
             return null;
